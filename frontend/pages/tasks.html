@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My tasks · TaskFlow</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header id="navbar"></header>
+  <main class="container">
+    <div class="page-header">
+      <h1>My tasks</h1>
+      <a class="btn" href="task-form.html">+ New task</a>
+    </div>
+    <div class="card">
+      <div class="inline-row">
+        <input class="form-control" id="search" type="search" placeholder="Search title or description">
+        <select class="form-control" id="status">
+          <option value="">All statuses</option>
+          <option value="todo">To do</option>
+          <option value="in-progress">In progress</option>
+          <option value="done">Done</option>
+        </select>
+        <select class="form-control" id="priority">
+          <option value="">All priorities</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+        <select class="form-control" id="sort">
+          <option value="-createdAt">Newest first</option>
+          <option value="createdAt">Oldest first</option>
+          <option value="dueDate">Due date (soonest)</option>
+          <option value="title">Title A-Z</option>
+        </select>
+      </div>
+    </div>
+    <div id="task-list"></div>
+    <div class="pagination" id="pagination"></div>
+  </main>
+  <div class="toast-container"></div>
+  <script type="module" src="../js/pages/tasks.js"></script>
+</body>
+</html>

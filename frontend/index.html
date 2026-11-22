@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TaskFlow</title>
+  <meta http-equiv="refresh" content="0; url=pages/dashboard.html">
+</head>
+<body>
+  <p>Opening TaskFlow... <a href="pages/dashboard.html">Continue</a></p>
+  <script>
+    // Logged-in users go to the dashboard, everyone else to login.
+    location.replace(localStorage.getItem('token') ? 'pages/dashboard.html' : 'pages/login.html');
+  </script>
+</body>
+</html>

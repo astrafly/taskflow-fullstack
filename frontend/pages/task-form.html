@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task · TaskFlow</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header id="navbar"></header>
+  <main class="container" style="max-width:600px">
+    <h1 id="form-title">New task</h1>
+    <form id="task-form" class="card" novalidate>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input class="form-control" id="title" name="title" maxlength="100" required>
+        <div class="field-error" data-error="title"></div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="4" maxlength="1000"></textarea>
+        <div class="field-error" data-error="description"></div>
+      </div>
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select class="form-control" id="status" name="status">
+          <option value="todo">To do</option>
+          <option value="in-progress">In progress</option>
+          <option value="done">Done</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="priority">Priority</label>
+        <select class="form-control" id="priority" name="priority">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="dueDate">Due date</label>
+        <input class="form-control" id="dueDate" name="dueDate" type="date">
+      </div>
+      <p class="field-error" id="form-error"></p>
+      <div class="inline-row">
+        <button class="btn btn-accent" type="submit" id="save-btn">Save</button>
+        <a class="btn btn-ghost" href="tasks.html">Cancel</a>
+      </div>
+    </form>
+  </main>
+  <div class="toast-container"></div>
+  <script type="module" src="../js/pages/task-form.js"></script>
+</body>
+</html>

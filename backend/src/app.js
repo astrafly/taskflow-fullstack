@@ -1,0 +1,29 @@
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const mongoSanitize = require('express-mongo-sanitize');
+const rateLimit = require('express-rate-limit');
+const path = require('path');
+const routes = require('./routes');
+const { notFound, errorHandler } = require('./middlewares/error.middleware');
+
+const app = express();
+
+app.use(helmet());
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+app.use(express.json({ limit: '10kb' }));
+app.use(mongoSanitize());
+
+if (process.env.NODE_ENV !== 'test') app.use(morgan('dev'));
+
+app.use('/api', rateLimit({ windowMs: 15 * 60 * 1000, max: 200, standardHeaders: true, legacyHeaders: false }));
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
+
+app.get('/health', (req, res) => res.json({ status: 'ok' }));
+app.use('/api/v1', routes);
+
+app.use(notFound);
+app.use(errorHandler);
+
+module.exports = app;
